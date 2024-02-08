@@ -1,0 +1,70 @@
+﻿@model ProductBuyerMVC.Models.ProductViewModelForUpdate
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ProductViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="ProductId" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="SKU" class="control-label"></label>
+                <input asp-for="SKU" class="form-control" />
+                <span asp-validation-for="SKU" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuyerId" class="control-label"></label>
+                <select asp-for="BuyerId" class="form-control" asp-items="ViewBag.Buyers">
+                    <option>--Select a Buyer--</option>
+                </select>
+                <span asp-validation-for="BuyerId" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="UpdatedBy" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+
+                <input type="submit" value="Delete" class="btn btn-danger ms-3" asp-action="Delete" asp-controller="Product" />
+            </div>
+        </form>
+    </div>
+</div>
+@{
+    if (ViewBag.Message != null)
+    {
+        <div>
+            @ViewBag.Message
+        </div>
+    }
+}
+<div>
+    <a asp-action="ListProducts">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

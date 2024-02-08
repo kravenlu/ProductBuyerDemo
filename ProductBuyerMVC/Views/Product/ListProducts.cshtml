@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ProductBuyerMVC.Models.ProductViewModel>
+
+@{
+    ViewData["Title"] = "ListProducts";
+}
+
+<h1>The List Of Products</h1>
+
+<p>
+    <a asp-action="Create">Create New Product</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @* <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.SKU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuyerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.SKU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuyerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedDate)
+            </td>
+            <td>
+                    @Html.ActionLink("View", "Details", new { id = item.ProductId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

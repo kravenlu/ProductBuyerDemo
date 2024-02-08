@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProductBuyerMVC.Models.BuyerViewModel>
+
+@{
+    ViewData["Title"] = "ListBuyers";
+}
+
+<h1>ListBuyers</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BuyerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuyerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuyerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuyerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+          @*   <td>
+            @Html.ActionLink("View", "Details", new { id = item.BuyerId }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.BuyerId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.BuyerId })
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>
